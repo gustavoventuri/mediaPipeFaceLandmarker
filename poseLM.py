@@ -44,23 +44,21 @@ pose = mp_pose.Pose(
 cap = cv2.VideoCapture(0)  
 
 while cap.isOpened():
-    success, image = cap.read()
+    s, image = cap.read()
 
     image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     results = pose.process(image_rgb)
-
-
-    image = cv2.cvtColor(image_rgb, cv2.COLOR_RGB2BGR)  # Convert back to BGR for OpenCV
+    #print(results.pose_landmarks)
+    #image = cv2.cvtColor(image_rgb, cv2.COLOR_RGB2BGR)  # Convert back to BGR for OpenCV
     if results.pose_landmarks:
         mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
 
-    cv2.imshow('Pose Estimation', image)
+    cv2.imshow('Pose', image)
 
 
     if cv2.waitKey(50) == 27:
         break
-
 
 cap.release()
 cv2.destroyAllWindows()
