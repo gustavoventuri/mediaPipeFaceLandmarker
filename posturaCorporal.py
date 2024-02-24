@@ -30,8 +30,7 @@ dark_blue = (127, 20, 0)
 light_green = (127, 233, 100)
 yellow = (0, 255, 255)
 pink = (255, 0, 255)
- 
-# Initialize mediapipe pose class.
+
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose()
 
@@ -39,8 +38,8 @@ cap = cv2.VideoCapture(1)
  
 while True:
     s, image = cap.read()
-    # Meta.
-    fps = int(cap.get(cv2.CAP_PROP_FPS))
+ 
+    fps = int(cap.get(cv2.CAP_PROP_FPS)) #para medir o tempo em que fica em má posica
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     frame_size = (width, height)
@@ -64,15 +63,15 @@ while True:
         # Use lm and lmPose as representative of the following methods.
     lm = keypoints.pose_landmarks
     lmPose  = mp_pose.PoseLandmark
-    # Left shoulder.
+    # ombro esquedo
     l_shldr_x = int(lm.landmark[lmPose.LEFT_SHOULDER].x * w)
     l_shldr_y = int(lm.landmark[lmPose.LEFT_SHOULDER].y * h)
     
-    # Right shoulder.
+    # ombro direito.
     r_shldr_x = int(lm.landmark[lmPose.RIGHT_SHOULDER].x * w)
     r_shldr_y = int(lm.landmark[lmPose.RIGHT_SHOULDER].y * h)
     
-    # Left ear.
+    # orelha esquerda.
     l_ear_x = int(lm.landmark[lmPose.LEFT_EAR].x * w)
     l_ear_y = int(lm.landmark[lmPose.LEFT_EAR].y * h)
     
