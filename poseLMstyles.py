@@ -47,7 +47,7 @@ with mp_pose.Pose(
         results.pose_world_landmarks, mp_pose.POSE_CONNECTIONS)
 
 # For webcam input:
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture('video.mp4')
 with mp_pose.Pose(
     min_detection_confidence=0.5,
     min_tracking_confidence=0.5) as pose:
