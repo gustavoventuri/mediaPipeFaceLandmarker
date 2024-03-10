@@ -1,0 +1,25 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Video Stream</title>
+</head>
+<body>
+    <ul>
+        <li><b>Identificação de Pose</b></li>
+        <p>Identifica se os braços estão esticados e se as mãos estão afastadas.</p>
+    </ul>
+    <img src="{{ url_for('video_feed') }}" />
+    <button onclick="desativar_video()">Alternar Video</button>
+    <script>
+        function desativar_video(){
+            var video = document.querySelector('img');
+            if (video.style.display === 'none'){
+                video.style.display = 'block';
+            } else {
+                video.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
